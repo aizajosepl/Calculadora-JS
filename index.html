@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Calculadora</title>
+	<style type="text/css">
+	h1{
+	 	text-align: center;
+	 	color: darkred;
+	 	font-size: 180%;
+	}
+	body{
+		background-image: url("Fondo_natural.jpeg");
+		background-position: center;
+		background-repeat: no-repeat;
+		background-size: cover;
+		background-max-width: 100px;
+		background-height: 50px;
+	}
+	button, input, div{
+		background-color: #ABEBC6;
+		border-top-left-radius: 10% 10%;
+	    border-top-right-radius: 10% 10%;
+	    border-bottom-right-radius: 10% 10%;
+	    border-bottom-left-radius: 10% 10%;
+		padding: 10px 33px;
+		text-align: center;
+		font-size: 18px;
+		margin: 10px;
+		cursor: pointer;
+		display: block;
+		margin-left: auto;
+		margin-right: auto;
+	}
+	table, th, td{
+		background-color: #34495E;
+		border-collapse: separate;
+		border: 1px solid black;
+		margin-right: auto;
+		margin-left: auto;
+		border-top-left-radius: 2% 2%;
+	    border-top-right-radius: 2% 2%;
+	    border-bottom-right-radius: 2% 2%;
+	    border-bottom-left-radius: 2% 2%;
+	}
+	#resultado{
+		background-color: white;
+		border-top-left-radius: 7% 7%;
+	    border-top-right-radius: 7% 7%;
+	    border-bottom-right-radius: 7% 7%;
+	    border-bottom-left-radius: 7% 7%;
+		text-align: center;
+		padding: 12px 30px;
+		width: 60%;
+	}
+	p{
+		text-align: center;
+		color: white;
+		font-size: 145%;
+	}
+	#especial{
+		color: white;
+		background-color: red;
+	}
+	.especialuno{
+		color: white;
+		background-color: #17202A;
+	}
+	.especialdos{
+		color: dark;
+		background-color: #D35400;
+	}
+	</style>
+</head>
+<body>
+	<header>
+		<h1>JCalculaScript</h1>
+	</header>
+
+	<table>
+		<tr>
+			<th colspan="3"><p>JCalculaScript</p></th>
+			<th><button onclick="limpiar()" type="button" id="especial" id="btnlimpiar">AC</button></th>
+		</tr>
+		<tr>
+			<th colspan="6"><div id="resultado"></div></th>
+		</tr>
+		<tr>
+			<th colspan="2"><input type="number" id="numerouno"></th>
+			<th colspan="2"><input type="number" id="numerodos"></th>
+		</tr>
+		<tr>
+			<td><button class="especialdos" id="btnsuma">+</button></td>
+			<td><button class="especialdos" id="btnresta">-</button></td>
+			<td><button class="especialdos" id="btnmultiplicacion">*</button></td>
+			<td><button class="especialdos" id="btndivision">/</button></td>
+		</tr>
+		<tr>
+			<td colspan="4"><button class="especialdos" id="btnexponente">pow</button></td>
+		</tr>
+		<tr>
+			<th colspan="4"><input type="number" id="numerotres"></th>
+		</tr>
+		<tr>
+			<td colspan="2"><button class="especialuno" id="btnraiz">sqrt</button></td>
+			<td colspan="2"><button class="especialuno" id="btnlogaritmo">log</button></td>
+		</tr>
+		<tr>
+			<td><button class="especialuno" id="btnseno">sin</button></td>
+			<td colspan="2"><button class="especialuno" id="btncoseno">cos</button></td>
+			<td><button class="especialuno" id="btntangente">tan</button></td>
+		</tr>
+		<tr>
+			<td><button class="especialuno" id="btnsenohip">sinh</button></td>
+			<td colspan="2"><button class="especialuno" id="btncosenohip">cosh</button></td>
+			<td><button class="especialuno" id="btntangentehip">tanh</button></td>
+		</tr>
+	</table><br><br><br>
+
+	<article>
+		<script type="text/javascript">
+			function suma()
+			{
+				var numerouno=parseInt(document.getElementById("numerouno").value);
+				var numerodos=parseInt(document.getElementById("numerodos").value);
+				suma=numerouno+numerodos
+				document.getElementById("resultado").innerHTML = +suma;
+			}
+			var a=document.getElementById('btnsuma');
+			a.addEventListener('click',suma);
+
+			function resta()
+			{
+				var numerouno=parseInt(document.getElementById("numerouno").value);
+				var numerodos=parseInt(document.getElementById("numerodos").value);
+				resta=numerouno-numerodos
+				document.getElementById("resultado").innerHTML = +resta;
+			}
+			var b=document.getElementById('btnresta');
+			b.addEventListener('click',resta);
+
+			function multiplicacion()
+			{
+				var numerouno=parseInt(document.getElementById("numerouno").value);
+				var numerodos=parseInt(document.getElementById("numerodos").value);
+				multiplicacion=numerouno*numerodos
+				document.getElementById("resultado").innerHTML = +multiplicacion;
+			}
+			var c=document.getElementById('btnmultiplicacion');
+			c.addEventListener('click',multiplicacion);
+
+			function division()
+			{
+				var numerouno=parseInt(document.getElementById("numerouno").value);
+				var numerodos=parseInt(document.getElementById("numerodos").value);
+				if (numerodos==0) {
+					document.getElementById("resultado").innerHTML = "Math ERROR!!!"
+				} 
+				else {
+					division=numerouno/numerodos
+					document.getElementById("resultado").innerHTML = +division;
+				}
+			}
+			var d=document.getElementById('btndivision');
+			d.addEventListener('click',division);
+
+			function funolog()
+			{
+				var numerotres=parseInt(document.getElementById("numerotres").value);
+				logaritmo=Math.log(numerotres);
+				document.getElementById("resultado").innerHTML = +logaritmo;			
+			}
+			var funo=document.getElementById('btnlogaritmo');
+			funo.addEventListener('click',funolog);
+
+			function fdosraiz()
+			{
+				var numerotres=parseInt(document.getElementById("numerotres").value);
+				if (numerotres<0) {
+					document.getElementById("resultado").innerHTML = "Math ERROR!!!";
+				} else{
+					raiz=Math.sqrt(numerotres);
+					document.getElementById("resultado").innerHTML = +raiz;
+				}
+			} 
+			var fdos=document.getElementById('btnraiz');
+			fdos.addEventListener('click',fdosraiz);
+
+			function ftresexpo()
+			{
+				var numerouno=parseInt(document.getElementById("numerouno").value);
+				var numerodos=parseInt(document.getElementById("numerodos").value);
+				exponente=Math.pow(numerouno,numerodos)
+				document.getElementById("resultado").innerHTML = +exponente;
+			}
+			var ftres=document.getElementById('btnexponente');
+			ftres.addEventListener('click',ftresexpo);
+
+			function fcuatroseno()
+			{
+				var numerotres=parseInt(document.getElementById("numerotres").value);
+				senr=Math.sin(numerotres);
+				seng=Math.sin(numerotres*Math.PI/180);
+				document.getElementById("resultado").innerHTML = +senr+" (En rad)<br>"+seng+" (En deg)";	
+			}
+			var fcuatro=document.getElementById('btnseno');
+			fcuatro.addEventListener('click',fcuatroseno);
+
+			function fcincocoseno()
+			{
+				var numerotres=parseInt(document.getElementById("numerotres").value);
+				cosr=Math.cos(numerotres);
+				cosg=Math.cos(numerotres*Math.PI/180);
+				document.getElementById("resultado").innerHTML = +cosr+" (En rad)<br>"+cosg+" (En deg)";
+			}
+			var fcinco=document.getElementById('btncoseno');
+			fcinco.addEventListener('click',fcincocoseno);
+
+			function fseistangente()
+			{
+				var numerotres=parseInt(document.getElementById("numerotres").value);
+				tanr=Math.tan(numerotres);
+				tang=Math.tan(numerotres*Math.PI/180);
+				document.getElementById("resultado").innerHTML = +tanr+" (En rad)<br>"+tang+" (En deg)";	
+			}
+			var fseis=document.getElementById('btntangente');
+			fseis.addEventListener('click',fseistangente);
+
+			function fsietesenoh()
+			{
+				var numerotres=parseInt(document.getElementById("numerotres").value);
+				senh=Math.sinh(numerotres);
+				document.getElementById("resultado").innerHTML = +senh;	
+			}
+			var fsiete=document.getElementById('btnsenohip');
+			fsiete.addEventListener('click',fsietesenoh);
+
+			function fochocosenoh()
+			{
+				var numerotres=parseInt(document.getElementById("numerotres").value);
+				cosh=Math.cosh(numerotres);
+				document.getElementById("resultado").innerHTML = +cosh;	
+			}
+			var focho=document.getElementById('btncosenohip');
+			focho.addEventListener('click',fochocosenoh);
+
+			function fnuevetangenteh()
+			{
+				var numerotres=parseInt(document.getElementById("numerotres").value);
+				tanh=Math.tanh(numerotres);
+				document.getElementById("resultado").innerHTML = +tanh;
+			}
+			var fnueve=document.getElementById('btntangentehip');
+			fnueve.addEventListener('click',fnuevetangenteh);
+			
+			function limpiar()
+			{
+				var numerouno=parseInt(document.getElementById("numerouno").value="");
+				var numerodos=parseInt(document.getElementById("numerodos").value="");
+				var numerotres=parseInt(document.getElementById("numerotres").value="");
+				document.getElementById("resultado").innerHTML= "";
+			}
+			var bcr=document.getElementById('btnlimpiar');
+			bcr.addEventListener('click',limpiar);
+		</script>
+	</article>
+</body>
